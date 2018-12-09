@@ -61,10 +61,10 @@ def project_data(Z, PCS, L, k, var):
         #print(PCS) #test if slicing properly
     return Z @ PCS
 
-X = np.array([[-2, -3], [-1, 3], [0, -1], [1, 0], [2, 1]])
+X = np.array([[1, 1], [2, 7], [3, 3], [4, 4], [5, 5]])
 Z = compute_Z(X)
 COV = compute_covariance_matrix(Z)
 L, PCS = find_pcs(COV)
-Z_star = project_data(Z, PCS, L, 1, 0)
+Z_star = project_data(Z, PCS, L, 2, 0)
 #print("Z_star is")
 #print(Z_star)
