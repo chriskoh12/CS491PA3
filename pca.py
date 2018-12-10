@@ -52,7 +52,6 @@ def project_data(Z, PCS, L, k, var):
         while temp < var:
             temp = 0.0
             k += 1
-            #print(k)
             for i in range(0, k):
                 temp += L[i]
             temp /= eigenTotal
@@ -62,11 +61,10 @@ def project_data(Z, PCS, L, k, var):
         #print(PCS) #test if slicing properly
     return Z @ PCS
 
-X = np.array([[1, 1], [2, 7], [3, 3], [4, 4], [5, 5]])
-#X = np.array([[-1, -1, -1], [-1, 1, -1], [1, -1, -1], [1, 5, 7]])
-Z = compute_Z(X, True, True)
-COV = compute_covariance_matrix(Z)
-L, PCS = find_pcs(COV)
-Z_star = project_data(Z, PCS, L, 0, 0.9)
+# X = np.array([[1, 1], [2, 7], [3, 3], [4, 4], [5, 5]])
+# Z = compute_Z(X)
+# COV = compute_covariance_matrix(Z)
+# L, PCS = find_pcs(COV)
+# Z_star = project_data(Z, PCS, L, 2, 0)
 #print("Z_star is")
 #print(Z_star)

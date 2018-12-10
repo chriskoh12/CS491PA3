@@ -5,12 +5,8 @@ import matplotlib.pyplot
 
 def compress_images(DATA,k):
     Z = pca.compute_Z(DATA)
-    #print(Z)
     COV = pca.compute_covariance_matrix(Z)
-    #print(COV)
     L, PCS = pca.find_pcs(COV)
-    #print(L)
-    #print(PCS)
     Z_star = pca.project_data(Z, PCS, L, k, 0)
     PCS = PCS[:, :k]
     X_compressed = Z_star @ PCS.transpose()
@@ -18,7 +14,7 @@ def compress_images(DATA,k):
     #print(X_compressed)
     if not os.path.exists('Output'):
         os.makedirs('Output')
-    for i in range(0, 869):
+    for i in range(0, len(X_compressed)):
         matplotlib.pyplot.imsave("Output/output" + str(i) + ".png", X_compressed[i].reshape(60,48), cmap='gray')
 
 
@@ -33,8 +29,8 @@ def load_data(input_dir):
     #print(A) print the matrix with all image values
     return A.astype(np.float)
 
-DATA = load_data('Data/Train/')
+#DATA = load_data('Data/Train/')
 #print(DATA)
 
-result = compress_images(DATA, 10)
+#result = compress_images(DATA, 10)
 #print(result)
