@@ -5,8 +5,12 @@ import matplotlib.pyplot
 
 def compress_images(DATA,k):
     Z = pca.compute_Z(DATA)
+    #print(Z)
     COV = pca.compute_covariance_matrix(Z)
+    #print(COV)
     L, PCS = pca.find_pcs(COV)
+    #print(L)
+    #print(PCS)
     Z_star = pca.project_data(Z, PCS, L, k, 0)
     PCS = PCS[:, :k]
     X_compressed = Z_star @ PCS.transpose()
